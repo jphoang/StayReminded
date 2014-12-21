@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='An app to remind you about anything via SMS')
+    meta(name='keywords', content='Reminders, SMS, To-do, List,') 
+    meta(name='author', content='Justin Hoang')
+    title= title
+    link(href='//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', data-backdrop="false")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal')
+              span(aria-hidden='true') ×
+              span.sr-only Close
+            h4#myModalLabel.modal-title Create a new Reminder
+          .modal-body
+            .form-group
+              label(for='add-reminder-title') Reminder Message:
+              input#reminder-title.form-control(type='text', placeholder='Enter what you want to be reminded about...')
+            .form-group
+              label(for='date') Date:
+              input#end-time.form-control(type='datetime', placeholder='MM/DD/YYYY HH:MM:SS')
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button' onClick='createNewReminder()') Save changes
+    #modalEdit.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalEditLabel', aria-hidden='true', data-backdrop="false")
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal')
+                  span(aria-hidden='true') ×
+                  span.sr-only Close
+                h4#modelEditLabel.modal-title Edit a Reminder
+              .modal-body
+                .form-group
+                  label(for='edit-reminder-title') Reminder Message:
+                  input#edit-reminder-title.form-control(type='text', placeholder='Enter what you want to be reminded about...')
+                .form-group
+                  label(for='date') Date:
+                  input#edit-end-time.form-control(type='datetime')
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Close
+                button#saveEdit.btn.btn-primary(data-id = '' type='button' ) Save changes
+    .container
+      block scripts
+      script(src='//code.jquery.com/jquery-1.11.0.min.js')
+      script(src='//code.jquery.com/jquery-migrate-1.2.1.min.js')
+      script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+      block content
+

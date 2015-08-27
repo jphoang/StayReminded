@@ -5,14 +5,9 @@
 *.pid
 *.seed
 
-# Database
-data/
-
 # Dependency directory
 node_modules/
-
-#Private directory
-private/
+public/libs/
 
 # Other
 .DS_Store

@@ -34,6 +34,22 @@ module.exports = function(app) {
     res.json(reminder);
   });
 
+  app.put('/api/reminders/:id', function (req, res) {
+    Reminder.findById(req.params.id, function (err, reminder) {
+        if (err)
+          res.send(err);
+
+        reminder.title = req.body.title;
+        reminder.endTime = new Date(req.body.endTime);
+        reminder.save();
+
+        res.json({
+          status  : 200,
+          success : 'Reminder Updated Successfully'
+      });
+    });
+  });
+
   app.delete('/api/reminders/:id', function (req, res) {
     Reminder.remove({_id: req.params.id }, function (err) {
       if (err)
@@ -42,7 +58,19 @@ module.exports = function(app) {
       res.json({
         status  : 200,
         success : 'Reminder Deleted Successfully'
-      }
+      });
+    });
+  });
+
+  app.delete('/api/reminders', function (req, res) {
+    Reminder.remove({userId: req.user.href }, function (err) {
+      if (err)
+        res.send(err);
+      
+      res.json({
+        status  : 200,
+        success : 'Reminders Deleted Successfully'
+      });
     });
   });
 

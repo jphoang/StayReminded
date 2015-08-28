@@ -42,4 +42,7 @@ app.listen(port);
 console.log('Listening on port ' + port);
 
 // expose app           
-exports = module.exports = app;                         
+exports = module.exports = app;
+
+// start cron job
+require('./twilio_cron.js')(require('./app/models/reminder'));                     

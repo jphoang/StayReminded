@@ -11,3 +11,6 @@ public/libs/
 
 # Other
 .DS_Store
+
+# Credentials
+config/twilio.js

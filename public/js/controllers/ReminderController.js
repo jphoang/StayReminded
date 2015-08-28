@@ -12,15 +12,15 @@ angular.module('ReminderModule', [])
     };
 
     $scope.getReminders = function(){
-        ReminderFactory.getAll().then(function(reminders){
-            $scope.reminders = reminders.data;
-        });
+      ReminderFactory.getAll().then(function(reminders){
+          $scope.reminders = reminders.data;
+      });
     };
 
     $scope.deleteAllReminders = function(){
-        ReminderFactory.deleteAll().then(function(reminders){
-            $scope.reminders = [];
-        });
+      ReminderFactory.deleteAll().then(function(reminders){
+          $scope.reminders = [];
+      });
     };
 
     $scope.clearModal = function(){
@@ -28,10 +28,10 @@ angular.module('ReminderModule', [])
     };
 
     $scope.createNew = function() {
-        ReminderFactory.create(angular.copy($scope.data)).then(function(){
-          $scope.clearModal();
-          $scope.getReminders();
-        });
+      ReminderFactory.create(angular.copy($scope.data)).then(function(){
+        $scope.clearModal();
+        $scope.getReminders();
+      });
     };
 
     $scope.delete = function(id) {

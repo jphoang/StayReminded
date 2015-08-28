@@ -1,1 +1,1 @@
-angular.module('stayRemindedApp', ['ngRoute', 'routes', 'MainModule', 'ReminderModule', 'ServiceModule']);
+angular.module('stayRemindedApp', ['ngRoute', 'routes', 'MainModule', 'ReminderModule', 'ServiceModule', 'ui.bootstrap.datetimepicker']);

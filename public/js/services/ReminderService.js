@@ -15,7 +15,7 @@ angular.module('ServiceModule', []).factory('ReminderFactory', ['$http', functio
 
     // call to POST and create a new reminder
     update : function(data) {
-      return $http.put('/api/reminders/' + data.id, data);
+      return $http.put('/api/reminders/' + data._id, data);
     },
 
     // call to DELETE a reminder

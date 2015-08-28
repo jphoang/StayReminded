@@ -1,7 +1,11 @@
-angular.module('ServiceModule', []).factory('Reminder', ['$http', function($http) {
+angular.module('ServiceModule', []).factory('ReminderFactory', ['$http', function($http) {
   return {
-    get : function() {
+    getAll : function() {
       return $http.get('/api/reminders');
+    },
+
+    get : function(id) {
+      return $http.get('/api/reminders/' + id);
     },
 
     // call to POST and create a new reminder
@@ -9,9 +13,19 @@ angular.module('ServiceModule', []).factory('Reminder', ['$http', function($http
       return $http.post('/api/reminders', data);
     },
 
+    // call to POST and create a new reminder
+    update : function(data) {
+      return $http.put('/api/reminders/' + data.id, data);
+    },
+
     // call to DELETE a reminder
     delete : function(id) {
         return $http.delete('/api/reminders/' + id);
+    },
+
+    // call to DELETE all reminders
+    deleteAll : function() {
+        return $http.delete('/api/reminders');
     }
   }       
 }]);

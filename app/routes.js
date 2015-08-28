@@ -27,6 +27,7 @@ module.exports = function(app) {
     var reminder = new Reminder();
 
     reminder.title = req.body.title;
+    reminder.desc = req.body.desc;
     reminder.endTime = new Date(req.body.endTime);
 
     reminder.save();
@@ -40,7 +41,9 @@ module.exports = function(app) {
           res.send(err);
 
         reminder.title = req.body.title;
+        reminder.desc = req.body.desc;
         reminder.endTime = new Date(req.body.endTime);
+
         reminder.save();
 
         res.json({
@@ -63,7 +66,7 @@ module.exports = function(app) {
   });
 
   app.delete('/api/reminders', function (req, res) {
-    Reminder.remove({userId: req.user.href }, function (err) {
+    Reminder.remove(function (err) {
       if (err)
         res.send(err);
       
